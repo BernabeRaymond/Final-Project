@@ -1,0 +1,145 @@
+.lists-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f3f7;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.create-container {
+  align-self: flex-end;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.table-container {
+  height: 100vh;
+  overflow-y: auto;
+  border: none;
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, #f8f1f8);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-lists {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.movie-lists th {
+  background: linear-gradient(145deg, #ff4f82, #ff79a1);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #ff8da3;
+  text-transform: uppercase;
+}
+
+.movie-lists tr {
+  transition: transform 0.3s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.movie-lists tr:hover {
+  background-color: #ffe6e6;
+  transform: translateY(-2px);
+}
+
+.movie-lists th,
+.movie-lists td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #f2d3e6;
+}
+
+button {
+  background: linear-gradient(145deg, #ff6bcb, #ff8edd);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 203, 0.3);
+  outline: none;
+}
+
+button:hover {
+  background: linear-gradient(145deg, #ff8edd, #ffa7e6);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 203, 0.5);
+}
+
+button:focus {
+  box-shadow: 0 0 0 4px rgba(255, 174, 240, 0.6);
+}
+
+@media (max-width: 768px) {
+  .lists-container {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .table-container {
+    padding: 1rem;
+  }
+
+  .movie-lists th,
+  .movie-lists td {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.4rem;
+  }
+}
+
+button::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+button:hover::after {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
