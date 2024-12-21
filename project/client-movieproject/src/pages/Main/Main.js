@@ -27,7 +27,7 @@ function Main() {
  
   const handleNavigateToMovies = () => {
     if (location.pathname !== '/movies') {
-      navigate('/movies');  
+      navigate('/movie');  
     }
   };
 

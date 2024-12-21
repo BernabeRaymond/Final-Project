@@ -37,7 +37,7 @@ function Login() {
     setStatus('loading');
 
     try {
-      const response = await axios.post('/admin/login', data, {
+      const response = await axios.post('/user/login', data, {
         headers: { 'Access-Control-Allow-Origin': '*' },
       });
 

@@ -5,7 +5,6 @@ import axios from 'axios';
 
 function View() {
   const { movie, setMovie } = useMovieContext();
-
   const { movieId } = useParams();
   const navigate = useNavigate();
 
@@ -21,38 +20,76 @@ function View() {
           navigate('/');
         });
     }
-    return () => {};
   }, [movieId]);
+
   return (
     <>
       {movie && (
         <>
           <div>
-            <div className='banner'>
+            <div className="banner">
               <h1>{movie.title}</h1>
             </div>
             <h3>{movie.overview}</h3>
-            {JSON.stringify(movie)}
           </div>
 
-          {movie.casts && movie.casts.length && (
+          {/* Cast Section */}
+          {movie.casts && movie.casts.length > 0 && (
             <div>
               <h1>Cast & Crew</h1>
-              {JSON.stringify(movie.casts)}
+              <div className="cast-grid">
+                {movie.casts.map((actor) => (
+                  <div key={actor.id} className="cast-member">
+                    <img
+                      src={
+                        actor.profile_path
+                          ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                          : 'https://via.placeholder.com/150'
+                      }
+                      alt={actor.name}
+                      className="cast-image"
+                    />
+                    <p>{actor.name}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
-          {movie.videos && movie.videos.length && (
+          {/* Video Section */}
+          {movie.videos && movie.videos.length > 0 && (
             <div>
               <h1>Videos</h1>
-              {JSON.stringify(movie.videos)}
+              <div className="video-container">
+                {movie.videos.map((video) => (
+                  <iframe
+                    key={video.key}
+                    width="560"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title={video.name}
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                ))}
+              </div>
             </div>
           )}
 
-          {movie.photos && movie.photos.length && (
+          {/* Photos Section */}
+          {movie.photos && movie.photos.length > 0 && (
             <div>
               <h1>Photos</h1>
-              {JSON.stringify(movie.photos)}
+              <div className="photo-grid">
+                {movie.photos.map((photo, index) => (
+                  <img
+                    key={index}
+                    src={photo.url}
+                    alt={`Photo ${index + 1}`}
+                    className="photo-image"
+                  />
+                ))}
+              </div>
             </div>
           )}
         </>
